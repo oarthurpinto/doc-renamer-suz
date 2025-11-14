@@ -9,6 +9,16 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import Optional
 
+try:  # pragma: no cover - fluxo exercitado apenas quando Typer não está disponível
+    import typer
+except ImportError:  # pragma: no cover - ambiente offline sem Typer
+    from ._typer_stub import typer
+
+try:  # pragma: no cover - fluxo alternativo apenas em ambientes sem Rich
+    from rich.console import Console
+    from rich.table import Table
+except ImportError:  # pragma: no cover - ambiente offline sem Rich
+    from ._rich_stub import Console, Table
 import typer
 from rich.console import Console
 from rich.table import Table
