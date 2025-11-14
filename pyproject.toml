@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "renomeador-chandra"
+version = "0.1.0"
+description = "Utilitário para renomear documentos usando OCR Chandra"
+authors = [
+    { name = "Projeto Automatizado" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=1.10",
+    "python-slugify>=8.0",
+    "regex>=2023.0",
+    "rich>=13.0",
+    "typer>=0.9",
+    "pandas>=2.0",
+    "pdf2image>=1.16",
+    "Pillow>=9.0"
+]
+
+[project.optional-dependencies]
+ocr = ["chandra-ocr", "transformers", "torch"]
+
+[project.scripts]
+renomeador-chandra = "renomeador_chandra.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["renomeador_chandra"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
