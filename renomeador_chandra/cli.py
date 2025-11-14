@@ -19,6 +19,9 @@ try:  # pragma: no cover - fluxo alternativo apenas em ambientes sem Rich
     from rich.table import Table
 except ImportError:  # pragma: no cover - ambiente offline sem Rich
     from ._rich_stub import Console, Table
+import typer
+from rich.console import Console
+from rich.table import Table
 
 from .config import AppConfig, ContextType
 from .ocr_chandra import run_ocr
